@@ -2098,7 +2098,7 @@ end
 if text == 'المطور' or text == 'مطور' then
 tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
  
- local msg_id = msg.id_/2097152/0.5
+local msg_id = msg.id_/2097152/0.5
 local Text = [[
  المطور
 ]]
@@ -4508,20 +4508,21 @@ Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙حسنا قم باعادة توجيه �
 end
 --     Source Storm     --
 
-if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then   
-local url,res = https.request('https://vvvzvv.ml/apiSIRIA/SIRIA.php?id='..msg.sender_user_id_) 
-data = JSON.decode(url) 
-if data.Ch_Member.info ~= true then 
-send(msg.chat_id_,msg.id_,'⌯︙شترك في قناة السورس اولآ @SORMILAN .') 
-return false  
-end 
-Text = " • 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏\n\n[⌯  𝒎𝒊𝒍𝒂𝒏 𝒄𝒉𝒂𝒏𝒏𝒆𝒍 ](http://t.me/SORMILAN)\n\n[⌯  𝒊𝒏𝒇𝒐 ‌𝒔𝒐𝒖𝒓𝒄𝒆](http://t.me/UUIIID)\n\n[⌯  𝒎𝒊𝒍𝒂𝒏 𝒅𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓](http://t.me/xb0bb)\n\n[⌯  𝒃𝒐𝒕 𝒎𝒊𝒍𝒂𝒏](http://t.me/xb0bbot)" 
-keyboard = {}  
-keyboard.inline_keyboard = { 
-{{text = '⌯ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏',url="t.me/sormilan/4"}}, 
-} 
-local msg_id = msg.id_/2097152/0.5 
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SORMILAN&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then
+local Text =[[
+• 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '• 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡', url="t.me/SORMILAN"},
+},
+{
+{text = '• 𝒅𝒆𝒗 父', url="t.me/XB0BB"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
 if text == "معتز" then
