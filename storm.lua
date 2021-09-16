@@ -67,7 +67,7 @@ storm = DevRio:get(Server.."Tokenstorm"):match("(%d+)"),
 SudoIds = {DevRio:get(Server.."Idstorm")},
 }
 Create(Config, "./config.lua") 
-file = io.open("milan.sh", "w")  
+file = io.open("storm.sh", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/storm
@@ -97,7 +97,7 @@ cd $HOME/storm
 while(true) do
 rm -fr ../.telegram-cli
 screen -S milan -X kill
-screen -S milan ./milan.sh
+screen -S milan ./storm.sh
 done
 ]]) 
 file:close() 
