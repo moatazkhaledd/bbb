@@ -67,7 +67,7 @@ storm = DevRio:get(Server.."Tokenstorm"):match("(%d+)"),
 SudoIds = {DevRio:get(Server.."Idstorm")},
 }
 Create(Config, "./config.lua") 
-file = io.open("storm.sh", "w")  
+file = io.open("milan.sh", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/storm
@@ -96,8 +96,8 @@ file:write([[
 cd $HOME/storm
 while(true) do
 rm -fr ../.telegram-cli
-screen -S storm -X kill
-screen -S storm ./storm.sh
+screen -S milan -X kill
+screen -S milan ./milan.sh
 done
 ]]) 
 file:close() 
@@ -1715,7 +1715,7 @@ end
 if ChatType == 'pv' then 
 if text == '/start' or text == '⤽ رجوع ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙مرحبا عزيزي المطور \n❁︙انت المطور الاساسي هنا \n❁︙اليك ازرار سورس ستورم \n❁︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙مرحبا عزيزي المطور \n❁︙انت المطور الاساسي هنا \n❁︙اليك ازرار سورس ميلآن \n❁︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ السورس ❁','وضع اسم البوت'},
 {'⤽  المطورين ❁','⤽ الاحصائيات ❁'},
@@ -1729,7 +1729,7 @@ return false
 end end
 if text == '⤽ تعيين كلايش الاوامر ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'تغير معلومات الترحيب'},
 {'حذف كليشة الايدي','تعيين كليشة الايدي'},
@@ -1744,7 +1744,7 @@ return false
 end end
 if text == '⤽ السورس ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بتحديث  سورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بتحديث  سورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ تحديث السورس ❁','⤽ تحديث ❁'},
 {'⤽ السيرفر ❁'},
@@ -1757,7 +1757,7 @@ return false
 end end
 if text == '⤽ الاحصائيات ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه ب أحصائيات  سورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه ب أحصائيات  سورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽  الاحصائيات ❁'},
 {'⤽ المشتركين ❁','⤽ المجموعات ❁'},
@@ -1771,7 +1771,7 @@ return false
 end end
 if text == '⤽  المطورين ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه ب المطورين لسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه ب المطورين لسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ الاساسيين ❁','مسح الاساسيين'},
 {'⤽ الثانويين ❁','مسح الثانويين'},
@@ -1784,7 +1784,7 @@ return false
 end end
 if text == '⤽ التفعيل والتعطيل ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه ب التفعيل والتعطيل لسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه ب التفعيل والتعطيل لسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ تعطيل التواصل ❁','⤽ تفعيل التواصل ❁'},
 {'⤽ تعطيل ترحيب البوت ❁','⤽ تفعيل ترحيب البوت ❁'},
@@ -1798,7 +1798,7 @@ return false
 end end
 if text == '⤽ الاذاعه ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بالاذاعه لسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بالاذاعه لسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ اذاعه بالتثبيت ❁'},
 {'⤽ اذاعه خاص ❁','⤽ اذاعه عام ❁'},
@@ -1811,7 +1811,7 @@ return false
 end end
 if text == '⤽ العام ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بالعام لسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بالعام لسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ اضف رد عام ❁','⤽ حذف رد عام ❁'},
 {'⤽ ردود العام ❁','⤽ مسح ردود العام ❁'},
@@ -1823,7 +1823,7 @@ return false
 end end
 if text == '⤽ ردود الخاص ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بردود الخاص لسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بردود الخاص لسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ تعيين رد الخاص ❁','⤽ حذف رد الخاص ❁'},
 {'⤽ جلب رد الخاص ❁'},
@@ -1834,7 +1834,7 @@ return false
 end end
 if text == '⤽ الاشتراك الاجباري ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بالاشتراك الاجباري لسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بالاشتراك الاجباري لسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽  تفعيل الاشتراك الاجباري ❁','⤽  تعطيل الاشتراك الاجباري ❁'},
 {'⤽ تعيين قناة الاشتراك ❁',' ⤽ حذف قناة الاشتراك ❁'},
@@ -1847,7 +1847,7 @@ return false
 end end
 if text == '⤽ المتجر ❁' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بمتجر سورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي المطور \n❁︙اليك الازرار الخاصه بمتجر سورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽  المتجر ❁'},
 {'تفعيل ملف AddedMe.lua','تعطيل ملف AddedMe.lua'},
@@ -1865,7 +1865,7 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end end
 if text == '⤽ الاوامر الخدميه ❁' or text == '/play' or text == '⤽  رجوع  ❁' or text == 'اوامر الخدميه' or text == '/free' then
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بالاوامر الخدميه الخاصه بسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بالاوامر الخدميه الخاصه بسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ اوامر التسليه ❁','⤽ الاوامر الخدميه  ❁'},
 {'⤽ اوامر النسب ❁','⤽ البوتات ❁'},
@@ -1877,7 +1877,7 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 if text == '⤽ اوامر التسليه ❁' then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بأوامر التسليه الخاصه بسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بأوامر التسليه الخاصه بسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ غنيلي ❁','⤽ اغنيه ❁'},
 {'⤽ ميمز ❁','⤽ ريمكس ❁'},
@@ -1889,7 +1889,7 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 if text == '⤽ الاوامر الخدميه  ❁' then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بالاوامر الخدميه الخاصه بسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بالاوامر الخدميه الخاصه بسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ الابراج ❁','⤽ حساب العمر ❁'},
 {'⤽ الزخرفه ❁','⤽ معاني الاسماء ❁'},
@@ -1902,7 +1902,7 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 if text == '⤽ البوتات ❁' then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بأوامر البوتات الخاصه بسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بأوامر البوتات الخاصه بسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ بوت الحذف ❁','⤽ بوت الهمسه ❁'},
 {'⤽ بوت اليوتيوب ❁','⤽ بوت الكت ❁'},
@@ -1913,7 +1913,7 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 if text == '⤽ اوامر النسب ❁' then 
-local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بأوامر النسب الخاصه بسورس ستورم فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '❁︙اهلا بك مجددا عزيزي \n❁︙اليك الازرار الخاصه بأوامر النسب الخاصه بسورس ميلآن فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'⤽ نسبه الكره ❁','⤽ نسبه الحب ❁'},
 {'⤽ نسبه الرجوله ❁','⤽ نسبه الانوثه ❁'},
@@ -2096,10 +2096,10 @@ end
 --     Source Storm     --
 if text and (text == 'المطور' or text == 'مطور' or text == '⤽  المطور ❁') and not DevRio:get(storm..'Rio:Devinline:Pv'..msg.chat_id_) then
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,result)
-local msg_id = msg.id_/2097152/0.5
 Text = "*❁︙𝑑𝑒𝑣 𝑛𝑎𝑚𝑒 ↬ * ["..result.first_name_.."](T.me/"..result.username_..")\n*❁︙𝑑𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑟  ↬* [@"..result.username_.."]"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text = ''..result.first_name_..' ',url="t.me/"..result.username_ or Sormilan}}}
+local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil)
 end
@@ -4500,6 +4500,7 @@ DevRio:set(storm..'Rio:viewget'..msg.sender_user_id_,true)
 Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙حسنا قم باعادة توجيه للمنشور الذي تريدني حساب مشاهداته', 1, 'md')
 end
 --     Source Storm     --
+
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then
 local Text =[[
 مرحبا بك في سورس ميلآن
@@ -4543,6 +4544,7 @@ tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = 1836706131, offset_ = 
 end,nil)
 end
 end
+
 if text == 'سورس ميلآن' or text == 'ميلان' then  
 local Text = [[  
 افضل سورس في التليجرام
@@ -4554,6 +4556,7 @@ keyboard.inline_keyboard = {
 local msg_id = msg.id_/2097152/0.5  
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
+
 if text == 'رفع خنزير' or text == 'رفع خنزير' or text == 'رفع خنزير' then
 Text = [[
 ♪ تم رفع العضو خنزير من النوع
@@ -9313,7 +9316,7 @@ end
 if not DevRio:get(storm..'Rio:Nsba:Rio'..msg.chat_id_) then
 if text == "نسبه الحب" and ChCheck(msg) or text == "نسبة الحب" and ChCheck(msg) then
 DevRio:set(storm..'LoveNsba:Rio'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال ⤽ جاك و روز', 1, 'md')
+Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال ⤽ معتز و روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الحب" and text ~= "نسبة الحب" and DevRio:get(storm..'LoveNsba:Rio'..msg.chat_id_..msg.sender_user_id_) then
@@ -9330,7 +9333,7 @@ end
 if not DevRio:get(storm..'Rio:Nsba:Rio'..msg.chat_id_) then
 if text == "نسبه الخيانه" and ChCheck(msg) or text == "نسبة الخيانه" and ChCheck(msg) or text == "⤽ نسبه الخيانه ❁" and ChCheck(msg) then
 DevRio:set(storm..'RyNsba:Rio'..msg.chat_id_..msg.sender_user_id_,true)
-Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسمين لحساب نسبة الخيانه بينهما كمثال ⤽ جاك و روز', 1, 'md')
+Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسمين لحساب نسبة الخيانه بينهما كمثال ⤽ معتز و روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الخيانه" and text ~= "نسبة الخيانه" and text ~= "⤽ نسبه الخيانه ❁" and DevRio:get(storm..'RyNsba:Rio'..msg.chat_id_..msg.sender_user_id_) then
@@ -9347,7 +9350,7 @@ end
 if not DevRio:get(storm..'Rio:Nsba:Rio'..msg.chat_id_) then
 if text and (text == "نسبه الجمال" or text == "نسبة الجمال" or text == "⤽ نسبه الجمال ❁") and ChCheck(msg) then
 DevRio:set(storm..'JNsba:Rio'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسم الشخص لقياس نسبة جماله كمثال ⤽ جاك او روز', 1, 'md')
+Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسم الشخص لقياس نسبة جماله كمثال ⤽ معتز او روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الجمال" and text ~= "نسبة الجمال" and text ~= "⤽ نسبه الجمال ❁" and DevRio:get(storm..'JNsba:Rio'..msg.chat_id_..msg.sender_user_id_) then
@@ -9364,7 +9367,7 @@ end
 if not DevRio:get(storm..'Rio:Nsba:Rio'..msg.chat_id_) then
 if text == "نسبه الكره" and ChCheck(msg) or text == "نسبة الكره" and ChCheck(msg) or text == "⤽ نسبه الكره ❁" and ChCheck(msg) then
 DevRio:set(storm..'HataNsba:Rio'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال ⤽ جاك و روز', 1, 'md')
+Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال ⤽ معتز و روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الكره" and text ~= "نسبة الكره" and text ~= "⤽ نسبه الكره ❁" and DevRio:get(storm..'HataNsba:Rio'..msg.chat_id_..msg.sender_user_id_) then
@@ -9381,7 +9384,7 @@ end
 if not DevRio:get(storm..'Rio:Nsba:Rio'..msg.chat_id_) then
 if text and (text == "نسبه الرجوله" or text == "نسبة الرجوله" or text == "نسبه رجوله" or text == "نسبة رجوله" or text == "⤽ نسبه الرجوله ❁") and ChCheck(msg) then
 DevRio:set(storm..'RjolaNsba:Rio'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال ⤽ جاك', 1, 'md')
+Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال ⤽ معتز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الرجوله" and text ~= "نسبة الرجوله" and text ~= "نسبه رجوله" and text ~= "نسبة رجوله" and text ~= "⤽ نسبه الرجوله ❁" and DevRio:get(storm..'RjolaNsba:Rio'..msg.chat_id_..msg.sender_user_id_) then
@@ -9415,7 +9418,7 @@ end
 if not DevRio:get(storm..'Rio:Nsba:Rio'..msg.chat_id_) then
 if text and (text == "نسبه الغباء" or text == "نسبة الغباء" or text == "⤽ نسبه الغباء ❁") and ChCheck(msg) then
 DevRio:set(storm..'StupidNsba:Rio'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال ⤽ جاك او روز', 1, 'md')
+Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال ⤽ معتز او روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الغباء" and text ~= "نسبة الغباء" and text ~= "⤽ نسبه الغباء ❁" and DevRio:get(storm..'StupidNsba:Rio'..msg.chat_id_..msg.sender_user_id_) then
@@ -9485,7 +9488,7 @@ Rio = math.random(2,1075);
 local Text ='*❁︙تم اختيار المتحركه لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendanimation?chat_id=' .. msg.chat_id_ .. '&animation=https://t.me/GifDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9506,7 +9509,7 @@ Rio = math.random(2,1201);
 local Text ='*❁︙تم اختيار مقطع الميمز لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan "}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/MemzDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9527,7 +9530,7 @@ Rio = math.random(4,2725);
 local Text ='*❁︙تم اختيار المقطع الصوتي لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/AudiosDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9548,7 +9551,7 @@ Rio = math.random(2,1167);
 local Text ='*❁︙تم اختيار الاغنيه لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/stormMp3/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9569,7 +9572,7 @@ Rio = math.random(2,612);
 local Text ='*❁︙تم اختيار الريمكس لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/RemixDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9590,7 +9593,7 @@ Rio = math.random(4,1122);
 local Text ='*❁︙تم اختيار الصوره لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/PhotosDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9653,7 +9656,7 @@ Rio = math.random(2,54);
 local Text ='*❁︙تم اختيار المسلسل لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SeriesDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -11533,7 +11536,7 @@ end end end end
 --     Source Milan     --
 if text == 'القناة' and ChCheck(msg) or text == 'قناة السورس' and ChCheck(msg) or text == 'قناه السورس' and ChCheck(msg) or text == 'قنات السورس' and ChCheck(msg) or text == '⤽ قناة السورس ❁' and ChCheck(msg) then 
 Text = [[
-❁︙[قناة السورس](https://t.me/So_ST0RM)
+❁︙[قناة السورس](https://t.me/Sormilan)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
