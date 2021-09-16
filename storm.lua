@@ -4508,23 +4508,6 @@ Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙حسنا قم باعادة توجيه �
 end
 --     Source Storm     --
 
-if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then
-local Text =[[
-• 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '• 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡', url="t.me/SORMILAN"},
-},
-{
-{text = '• 𝒅𝒆𝒗 父', url="t.me/XB0BB"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-
 if text == "معتز" then
 if TEXT_SUDO then 
 send(msg.chat_id_, msg.id_,TEXT_SUDO)
@@ -4552,6 +4535,8 @@ end,nil)
 end
 end
 
+--     Source Storm     --
+
 if text == 'سورس ميلآن' or text == 'ميلان' then  
 local Text = [[  
 افضل سورس في التليجرام
@@ -4563,6 +4548,8 @@ keyboard.inline_keyboard = {
 local msg_id = msg.id_/2097152/0.5  
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
+
+--     Source Storm     --
 
 if text == 'رفع خنزير' or text == 'رفع خنزير' or text == 'رفع خنزير' then
 Text = [[
@@ -11562,6 +11549,21 @@ Text = [[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '❁ مطور السورس',url="t.me/XB0BB"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end
+--     Source Milan     --
+
+if text == "السورس" and ChCheck(msg) or text == "سورس" and ChCheck(msg) or text == "⤽ السورس ❁" and ChCheck(msg) then 
+Text = [[
+❁︙𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '❁ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="http://t.me/SORMILAN"}},
+{{text = '❁ 𝒅𝒆𝒗 父',url="http://t.me/XB0BB"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
