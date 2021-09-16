@@ -2095,13 +2095,19 @@ return false
 end
 --     Source Storm     --
 
-if text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽  المطور ❁" and ChCheck(msg) then 
-Text = "*❁︙𝑑𝑒𝑣 𝑛𝑎𝑚𝑒 ↬ * ["..result.first_name_.."](T.me/"..result.username_..")\n*❁︙𝑑𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑟  ↬* [@"..result.username_.."]"
+if text == 'المطور' or text == 'مطور' then
+tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
+ 
+ local msg_id = msg.id_/2097152/0.5
+local Text = [[
+ المطور
+]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = ''..result.first_name_..' ',url="t.me/"..result.username_ or Sormilan}}}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-return false
+keyboard.inline_keyboard = {{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},}
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end,nil)
+
+
 end
 
 --     Source Storm     --
@@ -4502,14 +4508,18 @@ Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙حسنا قم باعادة توجيه �
 end
 --     Source Storm     --
 
-if text == "السورس" or text =="سورس" then
-local text = " • 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡"
-local inline = {
-{{text = '• 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="https://t.me/SORMILAN"}},
-{{text = '• 𝒅𝒆𝒗 父',url="https://t.me/UUIIID"}},
-{{text = '• 𝒕𝒘𝒂𝒔𝒐𝒍 𖤹 ',url="https://t.me/XB8BBOT"}},
-}   
-return send_inline(msg.chat_id_,text,inline,msg.id_)
+if SourceCh(msg) and text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
+local Text = [[
+ • 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '• 𝒎𝒚 𝒅𝒆𝒗 ♪', callback_data="/units"},{text = '• 𝒎𝒚 𝒄𝒉𝒂𝒏𝒏𝒆𝒍 ♪', callback_data="/theytry"}},   
+{{text = 'مــطــور الــبــوت •', url="http://t.me/"..sudos.UserName}},
+{{text = '♪اضغط لاضافه البوت لمجمعتك •' ,url="t.me/"..dofile("./Info.lua").botUserName.."?startgroup=start"}}, 
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/Sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 
 if text == "معتز" then
