@@ -3635,7 +3635,7 @@ end
 if ChatType == 'sp' or ChatType == 'gp' or ChatType == 'pv' then
 if text == 'بوت' or text == 'بوتت' then 
 NameBot = (DevRio:get(storm..'Rio:NameBot') or 'دروك')
-local stormTeam = {' قول يسطا انا'..NameBot..' ',' اسمي '..NameBot..' ',' . منتا شايف اسمي'..NameBot..' '}
+local stormTeam = {' قول يسطا انا'..NameBot..' ',' اسمي '..NameBot..' ',' . منتا شايف اسمي '..NameBot..' '}
 DevRio2 = math.random(#stormTeam) 
 Dev_Rio(msg.chat_id_, msg.id_, 1, stormTeam[DevRio2] , 1, 'html') 
 return false
@@ -4501,21 +4501,14 @@ Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙حسنا قم باعادة توجيه �
 end
 --     Source Storm     --
 
-if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then
-local Text =[[
-مرحبا بك في سورس ميلآن
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'قناة السورس', url="t.me/sormilan"},
-},
-{
-{text = 'مطور السورس', url="t.me/uuiiid"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+if MsgText[1] == "السورس" or MsgText[1]=="سورس" then
+local text = " • 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡"
+local inline = {
+{{text = '• 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="https://t.me/SORMILAN"}},
+{{text = '• 𝒅𝒆𝒗 父',url="https://t.me/UUIIID"}},
+{{text = '• 𝒕𝒘𝒂𝒔𝒐𝒍 𖤹 ',url="https://t.me/XB8BBOT"}},
+}   
+return send_inline(msg.chat_id_,text,inline,msg.id_)
 end
 
 if text == "معتز" then
