@@ -4501,7 +4501,7 @@ Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙حسنا قم باعادة توجيه �
 end
 --     Source Storm     --
 
-if MsgText[1] == "السورس" or MsgText[1]=="سورس" then
+if text == "السورس" or text =="سورس" then
 local text = " • 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡"
 local inline = {
 {{text = '• 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="https://t.me/SORMILAN"}},
