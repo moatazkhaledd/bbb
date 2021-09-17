@@ -11535,7 +11535,7 @@ end
 
 --     Source Milan     --
 
-if text == "مطور معتز" and ChCheck(msg) or text == "مطور زوز" and ChCheck(msg) or text == "معتز" and ChCheck(msg) or text == "مطور السورس" and ChCheck(msg) or text == "⤽ المطور زوز❁" and ChCheck(msg) then 
+if text == "مطور معتز" and ChCheck(msg) or text == "مطور زوز" and ChCheck(msg) or text == "معتز" and ChCheck(msg) or text == "مطور السورس" and ChCheck(msg) or text == "⤽ مبرمج السورس ❁" and ChCheck(msg) then 
 Text = [[
 ❁︙[مطور السورس](https://t.me/XB0BB)
 ]]
