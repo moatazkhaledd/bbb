@@ -11518,7 +11518,7 @@ return false
 end
 --     Source Milan     --
 
-if text == "السورس" and ChCheck(msg) or text == "سورس" and ChCheck(msg) or text == "⤽ السورس ❁" and ChCheck(msg) then 
+if text == "السورس" and ChCheck(msg) or text == "سورس" and ChCheck(msg) or text == "⤽  السورس ❁" and ChCheck(msg) then 
 Text = [[
 ❁︙𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
 ]]
