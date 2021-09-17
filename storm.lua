@@ -5073,7 +5073,7 @@ if text == ("بوسه") or text == ("بعد بوسه") or text == ("ضل بوس"
 if not DevRio:get(storm..'Rio:Lock:Stupid'..msg.chat_id_) then
 function bosh(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(storm) then 
-Dev_Rio(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح ابوس نفسيي؟😶💔', 1, 'md') 
+Dev_Rio(msg.chat_id_, msg.id_, 1, 'فهمنيي بس ازاي هحتاج نفسي ؟ 😶💔', 1, 'md')  
 return false  
 end  
 if tonumber(result.sender_user_id_) == tonumber(DevId) then  
@@ -5095,7 +5095,7 @@ if text == ("صيحه") or text == ("صيحها") or text == ("صيحهه") or t
 if not DevRio:get(storm..'Rio:Lock:Stupid'..msg.chat_id_) then
 function seha(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(storm) then 
-Dev_Rio(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 1, 'md') 
+Dev_Rio(msg.chat_id_, msg.id_, 1, 'فهمنيي بس ازاي هحتاج نفسي ؟ 😶💔', 1, 'md')  
 return false  
 end  
 if tonumber(result.sender_user_id_) == tonumber(DevId) then  
@@ -5120,16 +5120,16 @@ local username = text:match('^صيحه @(.*)') or text:match('^صيح @(.*)')
 function stormTeam(extra,result,success)
 if result.id_ then  
 if tonumber(result.id_) == tonumber(storm) then  
-Dev_Rio(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 1, 'md')  
+Dev_Rio(msg.chat_id_, msg.id_, 1, 'فهمنيي بس ازاي هحتاج نفسي ؟ 😶💔', 1, 'md')  
 return false 
 end  
 if tonumber(result.id_) == tonumber(DevId) then 
 Dev_Rio(msg.chat_id_, msg.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️ @'..username, 1, 'html') 
 return false  
 end  
-local stormTeam = "صارر ستاذيي 🏃🏻‍♂️♥️" 
+local stormTeam = "حصلل يكبير 😂❤" 
 Dev_Rio(msg.chat_id_, msg.id_, 1,stormTeam, 1, 'md') 
-local stormTeam = { "تتعال ححب @"..username.." محتاجيك🙂🍭","تعال يولل @"..username.." استاذكك ايريدككك😒🔪","يمعوود @"..username.." تعاال يريدوكك🤕♥️","تعال لكك @"..username.." ديصيحوك😐🖤",}
+local stormTeam = { "تتعال يا حب @"..username.." محتاجيك🙂🍭","تعال يولل @"..username.." استاذكك ايريدككك😒🔪","يمعوود @"..username.." تعاال يريدوكك🤕♥️","تعال لكك @"..username.." ديصيحوك😐🖤",}
 Dev_Rio(msg.chat_id_, result.id_, 1,''..stormTeam[math.random(#stormTeam)], 1, 'html') 
 else  
 Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙العضو غير موجود في المجموعه', 1, 'md') 
@@ -9584,7 +9584,7 @@ Rio = math.random(3,1002);
 local Text ='*❁︙تم اختيار صورة الانمي لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ storm team .',url="t.me/So_ST0RM"}},
+{{text = '❁ milan team .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/AnimeDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -11526,9 +11526,10 @@ keyboard = {}
 keyboard.inline_keyboard = {
 {{text = '❁ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="http://t.me/SORMILAN"}},
 {{text = '❁ 𝒅𝒆𝒗 父',url="http://t.me/XB0BB"}},
+{{text = '❁ 𝒕𝒘𝒂𝒔𝒐𝒍 𖤹',url="http://t.me/XB8BBot"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SORMILAN&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
 
@@ -11543,24 +11544,24 @@ keyboard.inline_keyboard = {
 {{text = '❁ مطور السورس',url="t.me/XB0BB"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/XB0BB&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
 
 --     Source Milan     --
 
-if text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽ المطور ❁" and ChCheck(msg) then 
-tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
- 
-Text = [[
- المطور
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+if text == 'المطور' or text == 'مطور' then 
+tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result)  
+local msg_id = msg.id_/2097152/0.5 
+local Text = [[ 
+ المطور 
+]] 
+keyboard = {}  
+keyboard.inline_keyboard = { 
+{{text = '❲'..result.first_name_..'❳',url="t.me/"..result.username_}}, 
+} 
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end,nil)
-return false
 end
 
 --     Source Milan     --
