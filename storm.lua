@@ -1474,6 +1474,8 @@ DevRio:set(storm.."Set:Cmd:Group:New1"..msg.chat_id_..":من","رفع منشئ")
 DevRio:sadd(storm.."List:Cmd:Group:New"..msg.chat_id_,"من")
 DevRio:set(storm.."Set:Cmd:Group:New1"..msg.chat_id_..":اس","رفع منشئ اساسي")
 DevRio:sadd(storm.."List:Cmd:Group:New"..msg.chat_id_,"اس")
+DevRio:set(storm.."Set:Cmd:Group:New1"..msg.chat_id_..":مك","رفع مالك")
+DevRio:sadd(storm.."List:Cmd:Group:New"..msg.chat_id_,"مك")
 DevRio:set(storm.."Set:Cmd:Group:New1"..msg.chat_id_..":مط","رفع مطور")
 DevRio:sadd(storm.."List:Cmd:Group:New"..msg.chat_id_,"مط")
 DevRio:set(storm.."Set:Cmd:Group:New1"..msg.chat_id_..":ثانوي","رفع مطور ثانوي")
@@ -2085,7 +2087,7 @@ if text == "اهمس" and ChCheck(msg) or text == "⤽ بوت الهمسه ❁" 
 if text == "رابط حذف" and ChCheck(msg) or text == "رابط الحذف" and ChCheck(msg) or text == "اريد رابط الحذف" and ChCheck(msg) or text == "شمرلي رابط الحذف" and ChCheck(msg) or text == "اريد رابط حذف" and ChCheck(msg) then local inline = {{{text="اضغط هنا",url="https://t.me/LC6BOT"}}} SendInline(msg.chat_id_,'*❁︙اضغط للحصول على رابط الحذف*',nil,inline) return false end
 if text == "⤽ بوت الحذف ❁" and ChCheck(msg) or text == "بوت الحذف" and ChCheck(msg) or text == "اريد بوت الحذف" and ChCheck(msg) or text == "اريد بوت حذف" and ChCheck(msg) or text == "بوت حذف" and ChCheck(msg) or text == "بوت حذف حسابات" and ChCheck(msg) or text == "راح احذف" and ChCheck(msg) then local inline = {{{text="اضغط هنا",url="https://t.me/LC6BOT"}}} SendInline(msg.chat_id_,'*❁︙اضغط للحصول على بوت الحذف*',nil,inline) return false end
 if text == "⤽ بوت الكت ❁" and ChCheck(msg) or text == "بوت الكت" and ChCheck(msg) or text == "بوت كت" and ChCheck(msg) then local inline = {{{text="اضغط هنا",url="https://t.me/E93OBot"}}} SendInline(msg.chat_id_,'*❁︙اضغط للحصول على بوت الكت*',nil,inline) return false end
-if text == "⤽ بوت الزخرفه ❁" and ChCheck(msg) or text == "بوت الزخرفه" and ChCheck(msg) or text == "بوت زخرفه" and ChCheck(msg) then local inline = {{{text="اضغط هنا",url="https://t.me/W55555535Bot"}}} SendInline(msg.chat_id_,'*❁︙اضغط للحصول على بوت الزخرفه*',nil,inline) return false end
+if text == "⤽ بوت الزخرفه ❁" and ChCheck(msg) or text == "بوت الزخرفه" and ChCheck(msg) or text == "بوت زخرفه" and ChCheck(msg) then local inline = {{{text="اضغط هنا",url="https://t.me/XD0DBot"}}} SendInline(msg.chat_id_,'*❁︙اضغط للحصول على بوت الزخرفه*',nil,inline) return false end
 if text == "ايديي" and ChCheck(msg) or text == "⤽ ايديي ❁" and ChCheck(msg) then Dev_Rio(msg.chat_id_, msg.id_, 1,'❁︙ايديك ⤽ ❨ `'..msg.sender_user_id_..'` ❩', 1, 'md') end
 -- Source Storm --
 if text == 'نبذا' and ChCheck(msg) or text == '⤽ نبذا ❁' then
@@ -2093,24 +2095,9 @@ local stormTeam = {'- Nothing stops him who wants you .','make them wish they ha
 Dev_Rio(msg.chat_id_, msg.id_, 1, ''..stormTeam[math.random(#stormTeam)]..'' , 1, 'md')  
 return false
 end
---     Source Storm     --
-
-if text == 'المطور' or text == 'مطور' then
-tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
- 
-local msg_id = msg.id_/2097152/0.5
-local Text = [[
- المطور
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},}
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end,nil)
-
-
-end
 
 --     Source Storm     --
+
 if text == "معرفي" and ChCheck(msg) or text == "⤽  معرفي ❁" and ChCheck(msg) then
 function get_username(extra,result,success)
 text = '❁︙معرفك ⤽ ❨ User ❩'
@@ -3597,17 +3584,6 @@ return false
 end
 --     Source Storm     --
 if text == "الرابط" then
-if not DevRio:get(storm..'Rio:Lock:GpLinks'..msg.chat_id_) then 
-if DevRio:get(storm.."Rio:Groups:Links"..msg.chat_id_) then
-Dev_Rio(msg.chat_id_, msg.id_, 1, "❁︙Group Link ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"..DevRio:get(storm.."Rio:Groups:Links"..msg.chat_id_), 1, "html")
-else 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙لايوجد رابط ارسل ⤽ ضع رابط او ارسل ⤽ انشاء رابط للانشاء', 1, 'md')
-end
-else
-end
-end
---     Source Storm     --
-if text == "الرابط" then
 if not DevRio:get(storm.."Rio:Lock:GpLinksinline"..msg.chat_id_) then 
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,ta) 
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/exportChatInviteLink?chat_id='..msg.chat_id_)) or DevRio:get(storm.."Private:Group:Link"..msg.chat_id_) 
@@ -3642,7 +3618,7 @@ end
 if ChatType == 'sp' or ChatType == 'gp' or ChatType == 'pv' then
 if text == 'بوت' or text == 'بوتت' then 
 NameBot = (DevRio:get(storm..'Rio:NameBot') or 'دروك')
-local stormTeam = {' قول يسطا انا'..NameBot..' ',' اسمي '..NameBot..' ',' . منتا شايف اسمي '..NameBot..' '}
+local stormTeam = {' قول يسطا انا '..NameBot..' ',' اسمي '..NameBot..' ',' . منتا شايف اسمي '..NameBot..' '}
 DevRio2 = math.random(#stormTeam) 
 Dev_Rio(msg.chat_id_, msg.id_, 1, stormTeam[DevRio2] , 1, 'html') 
 return false
@@ -3650,14 +3626,14 @@ end
 
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 NameBot = (DevRio:get(storm..'Rio:NameBot') or 'دروك') 
-local stormTeam = {"منتا شايف اسمي"..NameBot.." "} 
+local stormTeam = {"منتا شايف اسمي "..NameBot.." "} 
 DevRio2 = math.random(#stormTeam) 
 Dev_Rio(msg.chat_id_, msg.id_, 1, stormTeam[DevRio2] , 1, 'html') 
 return false
 end
 if text and text == (DevRio:get(storm..'Rio:NameBot') or 'دروك') then 
 NameBot = (DevRio:get(storm..'Rio:NameBot') or 'دروك')
-local namebot = {'قول يسطا انا'..NameBot..' ',' اسمي '..NameBot..' '} 
+local namebot = {'قول يسطا انا '..NameBot..' ',' اسمي '..NameBot..' '} 
 name = math.random(#namebot) 
 Dev_Rio(msg.chat_id_, msg.id_, 1, namebot[name] , 1, 'html') 
 return false 
