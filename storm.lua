@@ -11546,16 +11546,17 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
+
 --     Source Milan     --
 
-if text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽ المطور ❁" and ChCheck(msg) then 
+ifif text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽ المطور ❁" and ChCheck(msg) then 
+tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
+ 
 Text = [[
-❁︙المطور 彡
+ المطور
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},
-}
+keyboard.inline_keyboard = {{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},}
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil)
