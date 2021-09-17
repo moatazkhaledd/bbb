@@ -11549,7 +11549,7 @@ end
 
 --     Source Milan     --
 
-ifif text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽ المطور ❁" and ChCheck(msg) then 
+if text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽ المطور ❁" and ChCheck(msg) then 
 tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
  
 Text = [[
