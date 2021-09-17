@@ -11254,7 +11254,7 @@ if SecondSudo(msg) then
 if text == "تحديث السورس" and ChCheck(msg) or text == "تحديث سورس" and ChCheck(msg) or text == "⤽ تحديث السورس ❁" and ChCheck(msg) then 
 Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙جاري تحديث سورس ميلآن',1, 'md') 
 os.execute('rm -rf storm.lua') 
-os.execute('wget https://raw.githubusercontent.com/gret7/new/master/storm.lua') 
+os.execute('wget https://raw.githubusercontent.com/moatazkhaledd/MiLannfile/master/storm.lua') 
 dofile('storm.lua') 
 io.popen("rm -rf ../.telegram-cli/*")
 print("\27[31;47m\n          ( تم تحديث السورس )          \n\27[0;34;49m\n") 
@@ -11518,6 +11518,22 @@ return false
 end
 --     Source Milan     --
 
+if text == "السورس" and ChCheck(msg) or text == "سورس" and ChCheck(msg) or text == "⤽ السورس ❁" and ChCheck(msg) then 
+Text = [[
+❁︙𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '❁ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="http://t.me/SORMILAN"}},
+{{text = '❁ 𝒅𝒆𝒗 父',url="http://t.me/XB0BB"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end
+
+--     Source Milan     --
+
 if text == "مطور معتز" and ChCheck(msg) or text == "مطور زوز" and ChCheck(msg) or text == "معتز" and ChCheck(msg) or text == "مطور السورس" and ChCheck(msg) or text == "⤽ المطور زوز❁" and ChCheck(msg) then 
 Text = [[
 ❁︙[مطور السورس](https://t.me/XB0BB)
@@ -11532,30 +11548,15 @@ return false
 end
 --     Source Milan     --
 
-if text == "السورس" and ChCheck(msg) or text == "سورس" and ChCheck(msg) or text == "⤽ السورس ❁" and ChCheck(msg) then 
+if text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽ المطور ❁" and ChCheck(msg) then 
 Text = [[
-❁︙𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
+❁︙المطور 彡
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '❁ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="http://t.me/SORMILAN"}},
-{{text = '❁ 𝒅𝒆𝒗 父',url="http://t.me/XB0BB"}},
+{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/sormilan&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-return false
-end
---     Source Milan     --
-
-if text == 'المطور' or text == 'مطور' then
-tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
- 
-local msg_id = msg.id_/2097152/0.5
-Text = [[
- المطور
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},}
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil)
 return false
