@@ -9506,7 +9506,7 @@ keyboard.inline_keyboard = {
 {{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/Ccckkc/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/RemixDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 --     Source Storm     --
 if text == "تفعيل الاغاني" and Manager(msg) and ChCheck(msg) or text == "تفعيل اغنيه" and Manager(msg) and ChCheck(msg) then
@@ -11544,7 +11544,7 @@ end
 
 --     Source Milan     --
 
-if text == "مطور معتز" and ChCheck(msg) or text == "مطور زوز" and ChCheck(msg) or text == "معتز" and ChCheck(msg) or text == "مطور السورس" and ChCheck(msg) or text == "⤽ مبرمج السورس ❁" and ChCheck(msg) then 
+if text == "مطور معتز" and ChCheck(msg) or text == "مطور زوز" and ChCheck(msg) or text == "معتز" and ChCheck(msg) or text == "مطور السورس" and ChCheck(msg) or text == "⤽ المطور زوز ❁" and ChCheck(msg) then 
 Text = [[
 ❁︙[مطور السورس](https://t.me/XB0BB)
 ]]
@@ -11560,27 +11560,19 @@ end
 --     Source Milan     --
 
 
-if text == 'المطور' or text == 'مطور' then
-tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
  
- local msg_id = msg.id_/2097152/0.5
-local Text = [[
- المطور
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},}
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end,nil)
+else
+Name = 'مطور البوت\n['..result.first_name_..'](tg://user?id='..result.id_..')\n'
+sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
+ end
 
-
-end
 
 
 
 --     Source Milan     --
 
 if text == "استوري" and not  database:get(bot_id.."sing:for:me"..msg.chat_id_) then 
-ght = math.random(2,22); 
+Rio = math.random(2,22); 
 local Text ='تم اختيار فديو استوري  لك' 
 keyboard = {}  
 keyboard.inline_keyboard = { 
