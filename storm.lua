@@ -21,136 +21,143 @@ Port    = io.popen("echo ${SSH_CLIENT} | awk '{ port = $3 } END { print port }'"
 UpTime  = io.popen([[uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes"}']]):read('*a'):gsub('[\n\r]+', '')
 --     Source Storm     --
 local AutoSet = function() 
-if not DevRio:get(Server.."Idstorm") then 
-io.write('\27[1;35m\nالان ارسل ايدي المطور الاساسي ⤽ ⤈\n\27[0;33;49m') 
-local DevId = io.read():gsub(' ','') 
-if tostring(DevId):match('%d+') then 
-io.write('\27[1;36mتم حفظ ايدي المطور الاساسي\n27[0;39;49m') 
-DevRio:set(Server.."Idstorm",DevId) 
-else 
-print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nلم يتم حفظ ايدي المطور الاساسي ارسله مره اخرى\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
-end 
-os.execute('lua storm.lua') 
-end 
-if not DevRio:get(Server.."Tokenstorm") then 
-io.write('\27[1;35m\nالان قم بارسال توكن البوت ⤽ ⤈\n\27[0;33;49m') 
-local TokenBot = io.read() 
-if TokenBot ~= '' then 
-local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getMe') 
-if res ~= 200 then 
-print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nالتوكن غير صحيح تاكد منه ثم ارسله\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
-else 
-io.write('\27[1;36mتم حفظ توكن البوت بنجاح\n27[0;39;49m') 
-DevRio:set(Server.."Tokenstorm",TokenBot) 
-end  
-else 
-print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nلم يتم حفظ توكن البوت ارسله مره اخرى\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
-end  
-os.execute('lua storm.lua') 
-end
-local Create = function(data, file, uglify)  
+local create = function(data, file, uglify)  
 file = io.open(file, "w+")   
 local serialized   
 if not uglify then  
-serialized = serpent.block(data, {comment = false, name = "Config"})  
+serialized = serpent.block(data, {comment = false, name = "Info"})  
 else  
 serialized = serpent.dump(data)  
 end    
-file:write(serialized)
+file:write(serialized)    
 file:close()  
+end  
+if not database:get(id_server..":token") then
+io.write('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27')
+local token = io.read()
+if token ~= '' then
+local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
+if res ~= 200 then
+print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n التوكن غير صحيح تاكد منه ثم ارسله')
+else
+io.write('\27[0;31m تم حفظ التوكن بنجاح \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+database:set(id_server..":token",token)
+end 
+else
+print('\27[0;35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
+end 
+os.execute('lua storm.lua')
 end
-local CreateConfigAuto = function()
-Config = {
-DevId = DevRio:get(Server.."Idstorm"),
-TokenBot = DevRio:get(Server.."Tokenstorm"),
-storm = DevRio:get(Server.."Tokenstorm"):match("(%d+)"),
-SudoIds = {DevRio:get(Server.."Idstorm")},
-}
-Create(Config, "./config.lua") 
-file = io.open("storm.sh", "w")  
+if not database:get(id_server..":SUDO:ID") then
+io.write('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27[0;33;49m')
+local SUDOID = io.read()
+if SUDOID ~= '' then
+io.write('\27[1;35m تم حفظ ايدي المطور الاساسي \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+database:set(id_server..":SUDO:ID",SUDOID)
+else
+print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
+end 
+os.execute('lua storm.lua')
+end
+if not database:get(id_server..":SUDO:USERNAME") then
+io.write('\27[1;31m ↓ ارسل معرف المطور الاساسي :\n SEND ID FOR SIDO : \27[0;39;49m')
+local SUDOUSERNAME = io.read():gsub('@','')
+if SUDOUSERNAME ~= '' then
+io.write('\n\27[1;34m تم حفظ معرف المطور :\n\27[0;39;49m')
+database:set(id_server..":SUDO:USERNAME",'@'..SUDOUSERNAME)
+else
+print('\n\27[1;34m لم يتم حفظ معرف المطور :')
+end 
+os.execute('lua storm.lua')
+end
+local create_config_auto = function()
+config = {
+token = database:get(id_server..":token"),
+SUDO = database:get(id_server..":SUDO:ID"),
+UserName = database:get(id_server..":SUDO:USERNAME"),
+ }
+create(config, "./Info.lua")   
+end 
+create_config_auto()
+token = database:get(id_server..":token")
+SUDO = database:get(id_server..":SUDO:ID")
+install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
+file = io.open("milan", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/storm
-token="]]..DevRio:get(Server.."Tokenstorm")..[["
+cd $HOME/milan
+token="]]..database:get(id_server..":token")..[["
 while(true) do
 rm -fr ../.telegram-cli
 if [ ! -f ./tg ]; then
-echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
-echo "~ The tg File Was Not Found In The Bot Files!"
-echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉"
+echo "TG IS NOT FIND IN FILES BOT"
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
 exit 1
 fi
 if [ ! $token ]; then
-echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
-echo "~ The Token Was Not Found In The config.lua File!"
-echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
+echo -e "\e[1;36mTOKEN IS NOT FIND IN FILE INFO.LUA \e[0m"
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉"
 exit 1
 fi
+echo -e "\033[38;5;208m"
+echo -e "                                                  "
+echo -e "\033[0;00m"
+echo -e "\e[36m"
 ./tg -s ./storm.lua -p PROFILE --bot=$token
 done
 ]])  
 file:close()  
-file = io.open("Run", "w")  
+file = io.open("NG", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/storm
+cd $HOME/milan
 while(true) do
 rm -fr ../.telegram-cli
 screen -S milan -X kill
-screen -S milan ./storm.sh
+screen -S milan ./milan
 done
-]]) 
+]])  
 file:close() 
-io.popen("mkdir Files")
-os.execute('chmod +x Run;./Run')
+os.execute('rm -fr $HOME/.telegram-cli')
 end 
-CreateConfigAuto()
-end
-local Load_storm = function() 
-local f = io.open("./config.lua", "r") 
-if not f then 
-AutoSet() 
-else 
-f:close() 
-DevRio:del(Server.."Idstorm");DevRio:del(Server.."Tokenstorm")
-end 
-local config = loadfile("./config.lua")() 
-return config 
+local serialize_to_file = function(data, file, uglify)  
+file = io.open(file, "w+")  
+local serialized  
+if not uglify then   
+serialized = serpent.block(data, {comment = false, name = "Info"})  
+else   
+serialized = serpent.dump(data) 
 end  
-Load_storm() 
-print("\27[36m"..[[          
-echo "███████╗██╗          ██╗ ██████╗ ██╗  ██╗███████╗██████╗ ";
-echo "██╔════╝██║          ██║██╔═══██╗██║ ██╔╝██╔════╝██╔══██╗";
-echo "█████╗  ██║          ██║██║   ██║█████╔╝ █████╗  ██████╔╝";
-echo "██╔══╝  ██║     ██   ██║██║   ██║██╔═██╗ ██╔══╝  ██╔══██╗";
-echo "███████╗███████╗╚█████╔╝╚██████╔╝██║  ██╗███████╗██║  ██║";
-echo "╚══════╝╚══════╝ ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝";
-echo "                                                         ";
-  
-> DEV › @XB0BB
-> CH › @SoRMilan
+file:write(serialized)  
+file:close() 
+end 
+local load_redis = function()  
+local f = io.open("./Info.lua", "r")  
+if not f then   
+AutoSet()  
+else   
+f:close()  
+database:del(id_server..":token")
+database:del(id_server..":SUDO:ID")
+end  
+local config = loadfile("./Info.lua")() 
+return config 
+end 
+_redis = load_redis()  
+--------------------------------------------------------------------------------------------------------------
+print([[
+
+> CH › @SORMILAM
 ~> DEVELOPER › @XB0BB
-                                        
-]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m")
-Config = dofile("./config.lua")
-DevId = Config.DevId
-SudoIds = {Config.SudoIds,1836706131}
-storm = Config.storm
-TokenBot = Config.TokenBot
-NameBot = (DevRio:get(storm..'Rio:NameBot') or 'ستورم')
---     Source Storm     --
-FilesPrint = "\27[35m".."\nAll Source Files Started ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"..'\27[m'
-FilesNumber = 0
-for v in io.popen('ls Files'):lines() do
-if v:match(".lua$") then
-FilesNumber = FilesNumber + 1
-FilesPrint = FilesPrint.."\27[39m"..FilesNumber.."\27[36m".."~ : \27[10;32m"..v.."\27[m \n"
-end
-end
-FilesPrint = FilesPrint.."\27[35m".."┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n".."\27[m"
-if FilesNumber ~= 0 then
-print(FilesPrint)
-end
+]])
+sudos = dofile("./Info.lua") 
+SUDO = tonumber(sudos.SUDO)
+sudo_users = {SUDO}
+bot_id = sudos.token:match("(%d+)")  
+token = sudos.token 
 --     Source Storm     --
 --     Start Functions    --
 function vardump(value)
@@ -9458,7 +9465,8 @@ Rio = math.random(2,1075);
 local Text ='*❁︙تم اختيار المتحركه لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendanimation?chat_id=' .. msg.chat_id_ .. '&animation=https://t.me/GifDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9479,7 +9487,8 @@ Rio = math.random(2,1201);
 local Text ='*❁︙تم اختيار مقطع الميمز لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan "}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/MemzDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9500,10 +9509,11 @@ Rio = math.random(4,2725);
 local Text ='*❁︙تم اختيار المقطع الصوتي لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/AudiosDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/Ccckkc/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 --     Source Storm     --
 if text == "تفعيل الاغاني" and Manager(msg) and ChCheck(msg) or text == "تفعيل اغنيه" and Manager(msg) and ChCheck(msg) then
@@ -9521,10 +9531,11 @@ Rio = math.random(2,1167);
 local Text ='*❁︙تم اختيار الاغنيه لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/stormMp3/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/Ccckkc/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 --     Source Storm     --
 if text == "تفعيل ريمكس" and Manager(msg) and ChCheck(msg) or text == "تفعيل الريمكس" and Manager(msg) and ChCheck(msg) then
@@ -9542,7 +9553,8 @@ Rio = math.random(2,612);
 local Text ='*❁︙تم اختيار الريمكس لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/RemixDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9563,7 +9575,8 @@ Rio = math.random(4,1122);
 local Text ='*❁︙تم اختيار الصوره لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/PhotosDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9584,7 +9597,8 @@ Rio = math.random(3,1002);
 local Text ='*❁︙تم اختيار صورة الانمي لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/AnimeDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9605,7 +9619,8 @@ Rio = math.random(45,125);
 local Text ='*❁︙تم اختيار الفلم لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ Milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/MoviesDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -9626,7 +9641,8 @@ Rio = math.random(2,54);
 local Text ='*❁︙تم اختيار المسلسل لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❁ milan team .',url="t.me/Sormilan"}},
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SeriesDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -11520,13 +11536,13 @@ end
 
 if text == "السورس" and ChCheck(msg) or text == "سورس" and ChCheck(msg) or text == "⤽  السورس ❁" and ChCheck(msg) then 
 Text = [[
-❁︙𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
+•︙𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '❁ 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="http://t.me/SORMILAN"}},
-{{text = '❁ 𝒅𝒆𝒗 父',url="http://t.me/XB0BB"}},
-{{text = '❁ 𝒕𝒘𝒂𝒔𝒐𝒍 𖤹',url="http://t.me/XB8BBot"}},
+{{text = '• 𝒔𝒐𝒖𝒓𝒄𝒆 𝒎𝒊𝒍𝒂𝒏 彡',url="http://t.me/SORMILAN"}},
+{{text = '• 𝒅𝒆𝒗 父',url="http://t.me/XB0BB"}},
+{{text = '• 𝒕𝒘𝒂𝒔𝒐𝒍 𖤹',url="http://t.me/XB8BBot"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SORMILAN&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -11550,17 +11566,65 @@ end
 
 --     Source Milan     --
 
-if text == "المطور" and ChCheck(msg) or text == "مطور" and ChCheck(msg) or text == "⤽ المطور ❁" and ChCheck(msg) then 
-tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result)  
-local Text = [[ 
- المطور 
-]] 
+
+if text == 'المطور' or text == 'مطور' then
+tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
+ 
+ local msg_id = msg.id_/2097152/0.5
+local Text = [[
+ المطور
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text = '   ⁽'..result.first_name_..'₎  ',url="t.me/"..result.username_}},}
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end,nil)
+
+
+end
+
+
+
+--     Source Milan     --
+
+if text == "استوري" and not  database:get(bot_id.."sing:for:me"..msg.chat_id_) then 
+ght = math.random(2,22); 
+local Text ='تم اختيار فديو استوري  لك' 
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text = '❲'..result.first_name_..'❳',url="t.me/"..result.username_}}, 
+{{text = '• ᴍᴏᴀᴛᴀᴢ .',url="t.me/XB0BB"}},
+{{text = '• ch .',url="t.me/Sormilan"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/koko12300/'..ght..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+end
+
+--     Source Milan     --
+
+if text and text:match('@all (.*)') and Admin(msg) and not redis:get(bot_id..'Queen:tagall'..msg.chat_id_) then
+tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},func:tion(argg,dataa) 
+tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_
+},function(ta,Queen)
+x = 0
+tags = 0
+local list = Queen.members_
+for k, v in pairs(list) do
+tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
+if x == 5 or x == tags or k == 0 then
+tags = x + 5
+t = ""
+end
+x = x + 1
+tagname = data.first_name_
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")"
+if x == 5 or x == tags or k == 0 then
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(text:match('@all (.*)')..'\n'..t).."&parse_mode=Markdown&reply_to_message_id="..msg_id)
+end
+end,nil)
+end
+end,nil)
 end,nil)
 end
 
