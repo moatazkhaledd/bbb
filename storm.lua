@@ -11561,7 +11561,7 @@ end
 
 
  
-else
+elseif
 Name = 'مطور البوت\n['..result.first_name_..'](tg://user?id='..result.id_..')\n'
 sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
  end
