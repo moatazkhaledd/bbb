@@ -32,7 +32,7 @@ end
 file:write(serialized)    
 file:close()  
 end  
-if not database:get(id_server..":token") then
+if not DevRio:get(Server.."Tokenstorm") then 
 io.write('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27')
 local token = io.read()
 if token ~= '' then
@@ -137,7 +137,7 @@ end
 local load_redis = function()  
 local f = io.open("./Info.lua", "r")  
 if not f then   
-AutoSet()  
+loud_redis()
 else   
 f:close()  
 database:del(id_server..":token")
