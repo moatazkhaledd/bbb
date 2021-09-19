@@ -11600,36 +11600,6 @@ end
 
 --     Source Milan     --
 
-if text and text:match('@all (.*)') and Admin(msg) and not redis:get(bot_id..'Queen:tagall'..msg.chat_id_) then
-tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},func:tion(argg,dataa) 
-tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_
-},function(ta,Queen)
-x = 0
-tags = 0
-local list = Queen.members_
-for k, v in pairs(list) do
-tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
-if x == 5 or x == tags or k == 0 then
-tags = x + 5
-t = ""
-end
-x = x + 1
-tagname = data.first_name_
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
-t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")"
-if x == 5 or x == tags or k == 0 then
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(text:match('@all (.*)')..'\n'..t).."&parse_mode=Markdown&reply_to_message_id="..msg_id)
-end
-end,nil)
-end
-end,nil)
-end,nil)
-end
-
---     Source Milan     --
-
 if text == 'معلومات السيرفر' or text == 'السيرفر' or text == '⤽ السيرفر ❁' then 
 if not RioSudo(msg) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, '❁︙للمطور الاساسي فقط ', 1, 'md')
