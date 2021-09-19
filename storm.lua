@@ -137,7 +137,7 @@ end
 local load_redis = function()  
 local f = io.open("./Info.lua", "r")  
 if not f then   
-loud_redis()
+AutoSet() 
 else   
 f:close()  
 database:del(id_server..":token")
@@ -146,7 +146,7 @@ end
 local config = loadfile("./Info.lua")() 
 return config 
 end 
-_redis = load_redis()  
+Load_storm() 
 --------------------------------------------------------------------------------------------------------------
 print([[
 
