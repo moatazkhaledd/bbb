@@ -4917,23 +4917,73 @@ riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, stormTeam, 14, string.len(m
 DevRio:set(storm..'Rio:Lock:TagAll'..msg.chat_id_,true)
 end
 if Admin(msg) then
-if text == "تاك للكل" and ChCheck(msg) then
-if not DevRio:get(storm..'Rio:Lock:TagAll'..msg.chat_id_) then
-function TagAll(dp1,dp2)
-local text = "❁︙وينكم يالربع \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
-i = 0
-for k, v in pairs(dp2.members_) do
-i = i + 1
-if DevRio:get(storm..'Save:UserName'..v.user_id_) then
-text = text..i.."~ : [@"..DevRio:get(storm..'Save:UserName'..v.user_id_).."]\n"
-else
-text = text..i.."~ : "..v.user_id_.."\n"
+if text == "@all" or text == "تاك للكل" or text == "all" and CoSu(msg) then
+if not bot_data:get(ban_id..'Cick:all'..msg.chat_id_) then
+if bot_data:get(ban_id.."S00F4:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
+return 
+send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
 end
+bot_data:setex(ban_id..'S00F4:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(argg,dataa) 
+tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_},function(ta,sofi)
+x = 0
+tags = 0
+local list = sofi.members_
+for k, v in pairs(list) do
+tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
+if x == 5 or x == tags or k == 0 then
+tags = x + 5
+t = "#all"
+end
+x = x + 1
+tagname = data.first_name_
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")"
+if x == 5 or x == tags or k == 0 then
+local Text = t:gsub('#all,','#all\n')
+sendText(msg.chat_id_,Text,0,'md')
+end
+end,nil)
+end
+end,nil)
+end,nil)
+end
+end
+
+if text and text:match("^all (.*)$") or text:match("^@all (.*)$") and CoSu(msg) then 
+local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
+if not bot_data:get(ban_id..'Cick:all'..msg.chat_id_) then 
+if bot_data:get(ban_id.."banda:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then   
+return  
+send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك") 
 end 
-Dev_Rio(msg.chat_id_, msg.id_, 1, text, 1, 'md')
-end
-tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID, offset_ = 0,limit_ = 200000},TagAll,nil)
-end
+bot_data:setex(ban_id..'banda:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true) 
+tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(argg,dataa)  
+tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_},function(ta,ban) 
+x = 0 
+tags = 0 
+local list = ban.members_ 
+for k, v in pairs(list) do 
+tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data) 
+if x == 5 or x == tags or k == 0 then 
+tags = x + 5 
+t = "#all "..ttag.."" 
+end 
+x = x + 1 
+tagname = data.first_name_ 
+tagname = tagname:gsub("]","") 
+tagname = tagname:gsub("[[]","") 
+t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")" 
+if x == 5 or x == tags or k == 0 then 
+local Text = t:gsub('#all '..ttag..',','#all '..ttag..'\n') 
+sendText(msg.chat_id_,Text,0,'md') 
+end 
+end,nil) 
+end 
+end,nil) 
+end,nil) 
+end 
 end
 --     Source Storm     --
 if text and text:match("^كللهم (.*)$") and ChCheck(msg) then
